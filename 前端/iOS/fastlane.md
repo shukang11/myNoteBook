@@ -4,6 +4,8 @@
 
 ` https://www.jianshu.com/p/192c09cc8e27 `
 `https://juejin.im/post/5a7b10bb6fb9a0636263bfd5#heading-10`
+`https://www.jianshu.com/p/aa34e6ac47cc`
+
 
 ` sudo gem install fastlane `
 
