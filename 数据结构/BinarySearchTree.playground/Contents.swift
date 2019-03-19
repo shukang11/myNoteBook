@@ -46,6 +46,11 @@ public class BinarySearchTree<T: Comparable> {
     public var count: Int {
         return (left?.count ?? 0) + 1 + (right?.count ?? 0)
     }
+    
+    public var height: Int {
+        if isLeaf { return 0 }
+        return 1 + max(left?.height ?? 0, right?.height ?? 0)
+    }
 }
 
 extension BinarySearchTree {
@@ -126,10 +131,46 @@ extension BinarySearchTree: CustomStringConvertible {
         right?.traversePostOrder(process: process)
         process(value)
     }
+    
+    func map(formula: (T) -> T) -> [T] {
+        var a = [T]()
+        if let left = left {
+            a += left.map(formula: formula)
+        }
+        a.append(formula(value))
+        if let right = right {
+            a += right.map(formula: formula)
+        }
+        return a
+    }
+    
+    func toArray() -> [T] {
+        return map {$0}
+    }
+    
+    func minimum() -> BinarySearchTree {
+        var node = self
+        while let next = node.left {
+            node = next
+        }
+        return node
+    }
+    
+    func maximum() -> BinarySearchTree {
+        var node = self
+        while let next = node.right {
+            node = next
+        }
+        return node
+    }
+    
 }
 
 let tree = BinarySearchTree([5,9,3,8,4,9,10,57])
 print(tree)
 let node = tree.search(value: 8)
-print(node)
+print(node!)
 print(tree.traverseInOrder(process: { print($0) }))
+print("===")
+let min = tree.minimum()
+print(tree.height)
