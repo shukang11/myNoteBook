@@ -22,6 +22,7 @@ or
 [program:myProgram]
 directory=/home/pi/sky_tool/
 command=pipenv run gunicorn -c gunicorn_config.py main:application
+environment=SUPERSET_HOME=/home/qboxserver/.superset,SUPERSET_WEBSERVER_PORT=7070
 autostart=true
 autorestart=ture
 stdout_logfile=/home/myname/test.log
