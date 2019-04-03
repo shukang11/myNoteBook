@@ -5,7 +5,7 @@
 
 int token; // current token
 
-enum {LEA, MOV, JMP, CALL, PUSH, POP, JZ, JNZ, EXIT};
+enum {LEA, IMM, LC, LI, SC, SI, JMP, CALL, RET, ENT, ADJ, LEV, PUSH, POP, JZ, JNZ, EXIT};
 
 int *text, // text segment
     *data, // data segment
@@ -26,6 +26,12 @@ void statement() {
 }
 
 void eval() {
+    int op;
+    while(1){
+        op = *pc++; // get next operation code
+        if (op == IMM) { ax = *pc++; }
+    }
+    
 }
 
 int main(int argc, char const *argv[])
@@ -61,6 +67,7 @@ int main(int argc, char const *argv[])
     *--sp = (int)argv;
     *--sp = (int)tmp;
 
+    printf("====== %d", tmp);
     next();
 
     while(token){
