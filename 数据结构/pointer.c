@@ -58,16 +58,42 @@ void pointer003() {
     p[1] = &b;
     p[2] = &c;
     for(size_t i = 0; i < sizeof(p)/sizeof(p[0]); i++) {
-        printf("%d \n", *p[i]);
+        int *pi = p[i];
+        printf("%d \n", *pi);
     }
 }
 
+void demo3() {
+    int array[5] = {0};
+    int *ptr = array;
+    for(int i = 0; i < sizeof(array)/sizeof(array[0]); i ++) {
+        (*ptr)++; // 使array[i]的值 += 1
+        ptr++; // 游标向下继续走，移动到下一个目标
+    }
+    for(size_t i = 0; i < sizeof(array)/sizeof(array[0]); i++)
+    {
+        printf("%d \n", array[i]);
+    }
+    
+}
+
+void demo4() {
+    char a[20] = "You_are_a_girl";
+    printf("size of a is %lu \n", sizeof(a));
+    printf("size of a[0] is %lu \n", sizeof(a[0]));
+    char *p = a;
+    printf("ptr = %c \n", *p); // 指向*p 的指针位置
+    p ++; // p 移动位置
+    printf("ptr = %c \n", *p); // 指向*p 的指针位置
+}
 
 int main(int argc, char const *argv[])
 {
     // printPointer();
     // point001();
     // pointer002();
-    pointer003();
+    // pointer003();
+    // demo3();
+    demo4();
     return 0;
 }
