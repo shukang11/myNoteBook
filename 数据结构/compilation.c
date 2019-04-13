@@ -10,7 +10,7 @@ int debug = 1;
 enum { 
     IMM, LC, LI, SC, SI,
     OR  ,XOR ,AND ,EQ  ,NE  ,LT  ,GT  ,LE  ,GE  ,SHL ,SHR ,ADD ,SUB ,MUL ,DIV ,MOD,
-    PUSH, EXIT
+    PUSH, JMP, JZ, JNZ, EXIT
 };
 
 /*
@@ -68,7 +68,9 @@ int eval() {
         else if (op == SI) {*(int *)sp++ = ax;}
 
         else if (op == PUSH) {*--sp = ax;} // 入栈
-
+        else if (op == JMP) {pc = (int *)pc;} // 将下一条指令载入
+        else if (op == JZ) { pc = ax ? pc + 1 : (int *)*pc; }
+        else if (op == JNZ) { pc = ax ? (int *)*pc : pc + 1; }
 
         else if (op == OR)  {ax = *sp++ | ax;}
         else if (op == XOR) {ax = *sp++ ^ ax;}
