@@ -16,10 +16,10 @@ int ax;// 通用寄存器
 
 int cycle;
 
-enum { MOV, PUSH, 
+enum { IMM ,PUSH, 
     ADD ,SUB ,MUL ,DIV,
     EXIT
- };
+};
 
 int eval() {
     int op;
@@ -27,14 +27,15 @@ int eval() {
         op =  *pc++;
         cycle ++;
         printf("%d> %.4s ax=%d  *sp = %d\n", cycle,
-                   & "MOV ,PUSH,"
+                   & "IMM ,PUSH,"
                    "ADD ,SUB ,MUL ,DIV ,"
                    "EXIT"[op * 5], ax, *sp);
-        if (op == MOV) { // 将值移动到通用寄存器
+        if (op == IMM) { // 将值移动到通用寄存器MOV(tar sor)
             ax = *pc++;
+
         } else if (op == PUSH) { // sp 的入栈是减小的，将值入栈
             *--sp = ax;
-        
+            
         // 操作数
         } else if (op == ADD) { // +
             ax = *sp++ + ax;
@@ -51,7 +52,6 @@ int eval() {
             return *sp;
         }
     }
-    
 }
 
 int main() {
@@ -73,13 +73,25 @@ int main() {
 
     ax = 0;
     int i = 0;
-    text[i++] = MOV;
+    text[i++] = IMM;
     text[i++] = 10;
     text[i++] = PUSH;
-    text[i++] = MOV;
+
+    text[i++] = IMM;
     text[i++] = 20;
     text[i++] = ADD;
     text[i++] = PUSH;
+
+    text[i++] = IMM;
+    text[i++] = 20;
+    text[i++] = ADD;
+    text[i++] = PUSH;
+
+    text[i++] = IMM;
+    text[i++] = 30;
+    text[i++] = SUB;
+    text[i++] = PUSH;
+
     text[i++] = EXIT;
     pc = text;
     int result = eval();
