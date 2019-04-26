@@ -15,6 +15,8 @@
 
 * [算法](#算法)
 
+* [机器学习](#机器学习)
+
 ## iOS&Swift
 
 * [fastlane](/iOS/fastlane.md)
@@ -47,3 +49,7 @@
 * [基础知识](/算法/基础知识.md)
 
 * [LeetCode](https://github.com/jiazifa/developNoteBook/tree/master/python/LeetCode)
+
+## 机器学习
+
+* [线性回归](/机器学习/线性回归.md)
