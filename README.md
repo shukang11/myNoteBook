@@ -13,9 +13,13 @@
 
 * [数据库](#数据库)
 
+* [算法](#算法)
+
 ## iOS&Swift
 
 * [fastlane](/iOS/fastlane.md)
+
+* [面试题总结](https://jiazifa.github.io/tree.github.io/%E7%AC%94%E8%AE%B0/2018/03/15/iOS%E9%9D%A2%E8%AF%95%E9%A2%98%E8%AE%B0%E5%BD%95/)
 
 ## 数据结构
 * [索引](/数据结构/index.md)
@@ -28,10 +32,18 @@
 ## 服务器
 
 * [respbain](/服务器/respbain.md)
+
 * [进程管理](/服务器/supervisor.md)
+
 * [Nginx](/服务器/nginx.md)
 
 ## 数据库
 * [Redis](/数据库/redis.md)
 
 * [Mysql](/数据库/Mysql.md)
+
+## 算法
+
+* [基础知识](/算法/基础知识.md)
+
+* [LeetCode](https://github.com/jiazifa/developNoteBook/tree/master/python/LeetCode)
