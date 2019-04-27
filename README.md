@@ -33,7 +33,7 @@
 
 ## 服务器
 
-* [respbain](/服务器/respbain.md)
+* [linux](/服务器/linux常用的操作.md)
 
 * [进程管理](/服务器/supervisor.md)
 
