@@ -1,9 +1,9 @@
-"use strict";
+'use strict';
 
-const audio2 = document.querySelector("audio#audio2");
-const callButton = document.querySelector("button#callButton");
-const hangupButton = document.querySelector("button#hangupButton");
-const codecSelector = document.querySelector("select#codec");
+const audio2 = document.querySelector('audio#audio2');
+const callButton = document.querySelector('button#callButton');
+const hangupButton = document.querySelector('button#hangupButton');
+const codecSelector = document.querySelector('select#codec');
 hangupButton.disabled = true;
 callButton.onclick = call;
 hangupButton.onclick = hangup;
@@ -28,25 +28,24 @@ const offerOptions = {
 
 function gotStream(stream) {
   hangupButton.disabled = false;
-  console.log("Received local stream");
+  console.log('Received local stream');
   localStream = stream;
   const audioTracks = localStream.getAudioTracks();
   if (audioTracks.length > 0) {
     console.log(`Using Audio device: ${audioTracks[0].label}`);
   }
   localStream.getTracks().forEach(track => pc1.addTrack(track, localStream));
-  console.log("Adding Local Stream to peer connection");
+  console.log('Adding Local Stream to peer connection');
 
-  pc1
-    .createOffer(offerOptions)
+  pc1.createOffer(offerOptions)
     .then(gotDescription1, onCreateSessionDescriptionError);
 
   bitrateSeries = new TimelineDataSeries();
-  bitrateGraph = new TimelineGraphView("bitrateGraph", "bitrateCanvas");
+  bitrateGraph = new TimelineGraphView('bitrateGraph', 'bitrateCanvas');
   bitrateGraph.updateEndDate();
 
   packetSeries = new TimelineDataSeries();
-  packetGraph = new TimelineGraphView("packetGraph", "packetCanvas");
+  packetGraph = new TimelineGraphView('packetGraph', 'packetCanvas');
   packetGraph.updateEndDate();
 }
 
@@ -57,37 +56,36 @@ function onCreateSessionDescriptionError(error) {
 function call() {
   callButton.disabled = true;
   codecSelector.disabled = true;
-  console.log("Starting call");
+  console.log('Starting call');
   const servers = null;
   pc1 = new RTCPeerConnection(servers);
-  console.log("Created local peer connection object pc1");
+  console.log('Created local peer connection object pc1');
   pc1.onicecandidate = e => onIceCandidate(pc1, e);
   pc2 = new RTCPeerConnection(servers);
-  console.log("Created remote peer connection object pc2");
+  console.log('Created remote peer connection object pc2');
   pc2.onicecandidate = e => onIceCandidate(pc2, e);
   pc2.ontrack = gotRemoteStream;
-  console.log("Requesting local stream");
-  navigator.mediaDevices
-    .getUserMedia({
-      audio: true,
-      video: false
-    })
-    .then(gotStream)
-    .catch(e => {
+  console.log('Requesting local stream');
+  var devices = navigator.mediaDevices
+  console.log(devices.getUserMedia);
+  devices.getUserMedia({
+    audio: true,
+    video: false
+  })
+  .then(gotStream).catch(e => {
       alert(`getUserMedia() error: ${e.name}`);
     });
 }
 
 function gotDescription1(desc) {
   console.log(`Offer from pc1\n${desc.sdp}`);
-  pc1.setLocalDescription(desc).then(() => {
-    desc.sdp = forceChosenAudioCodec(desc.sdp);
-    pc2.setRemoteDescription(desc).then(() => {
-      return pc2
-        .createAnswer()
-        .then(gotDescription2, onCreateSessionDescriptionError);
+  pc1.setLocalDescription(desc)
+    .then(() => {
+      desc.sdp = forceChosenAudioCodec(desc.sdp);
+      pc2.setRemoteDescription(desc).then(() => {
+        return pc2.createAnswer().then(gotDescription2, onCreateSessionDescriptionError);
+      }, onSetSessionDescriptionError);
     }, onSetSessionDescriptionError);
-  }, onSetSessionDescriptionError);
 }
 
 function gotDescription2(desc) {
@@ -99,7 +97,7 @@ function gotDescription2(desc) {
 }
 
 function hangup() {
-  console.log("Ending call");
+  console.log('Ending call');
   localStream.getTracks().forEach(track => track.stop());
   pc1.close();
   pc2.close();
@@ -113,34 +111,29 @@ function hangup() {
 function gotRemoteStream(e) {
   if (audio2.srcObject !== e.streams[0]) {
     audio2.srcObject = e.streams[0];
-    console.log("Received remote stream");
+    console.log('Received remote stream');
   }
 }
 
 function getOtherPc(pc) {
-  return pc === pc1 ? pc2 : pc1;
+  return (pc === pc1) ? pc2 : pc1;
 }
 
 function getName(pc) {
-  return pc === pc1 ? "pc1" : "pc2";
+  return (pc === pc1) ? 'pc1' : 'pc2';
 }
 
 function onIceCandidate(pc, event) {
-  getOtherPc(pc)
-    .addIceCandidate(event.candidate)
+  getOtherPc(pc).addIceCandidate(event.candidate)
     .then(
       () => onAddIceCandidateSuccess(pc),
       err => onAddIceCandidateError(pc, err)
     );
-  console.log(
-    `${getName(pc)} ICE candidate:\n${
-      event.candidate ? event.candidate.candidate : "(null)"
-    }`
-  );
+  console.log(`${getName(pc)} ICE candidate:\n${event.candidate ? event.candidate.candidate : '(null)'}`);
 }
 
 function onAddIceCandidateSuccess() {
-  console.log("AddIceCandidate success.");
+  console.log('AddIceCandidate success.');
 }
 
 function onAddIceCandidateError(error) {
@@ -152,7 +145,7 @@ function onSetSessionDescriptionError(error) {
 }
 
 function forceChosenAudioCodec(sdp) {
-  return maybePreferCodec(sdp, "audio", "send", codecSelector.value);
+  return maybePreferCodec(sdp, 'audio', 'send', codecSelector.value);
 }
 
 // Copied from AppRTC's sdputils.js:
@@ -161,24 +154,24 @@ function forceChosenAudioCodec(sdp) {
 // The format of |codec| is 'NAME/RATE', e.g. 'opus/48000'.
 function maybePreferCodec(sdp, type, dir, codec) {
   const str = `${type} ${dir} codec`;
-  if (codec === "") {
+  if (codec === '') {
     console.log(`No preference on ${str}.`);
     return sdp;
   }
 
   console.log(`Prefer ${str}: ${codec}`);
 
-  const sdpLines = sdp.split("\r\n");
+  const sdpLines = sdp.split('\r\n');
 
   // Search for m line.
-  const mLineIndex = findLine(sdpLines, "m=", type);
+  const mLineIndex = findLine(sdpLines, 'm=', type);
   if (mLineIndex === null) {
     return sdp;
   }
 
   // If the codec is available, set it as the default in m line.
-  const codecIndex = findLine(sdpLines, "a=rtpmap", codec);
-  console.log("codecIndex", codecIndex);
+  const codecIndex = findLine(sdpLines, 'a=rtpmap', codec);
+  console.log('codecIndex', codecIndex);
   if (codecIndex) {
     const payload = getCodecPayloadType(sdpLines[codecIndex]);
     if (payload) {
@@ -186,7 +179,7 @@ function maybePreferCodec(sdp, type, dir, codec) {
     }
   }
 
-  sdp = sdpLines.join("\r\n");
+  sdp = sdpLines.join('\r\n');
   return sdp;
 }
 
@@ -202,10 +195,8 @@ function findLineInRange(sdpLines, startLine, endLine, prefix, substr) {
   const realEndLine = endLine !== -1 ? endLine : sdpLines.length;
   for (let i = startLine; i < realEndLine; ++i) {
     if (sdpLines[i].indexOf(prefix) === 0) {
-      if (
-        !substr ||
-        sdpLines[i].toLowerCase().indexOf(substr.toLowerCase()) !== -1
-      ) {
+      if (!substr ||
+        sdpLines[i].toLowerCase().indexOf(substr.toLowerCase()) !== -1) {
         return i;
       }
     }
@@ -215,14 +206,14 @@ function findLineInRange(sdpLines, startLine, endLine, prefix, substr) {
 
 // Gets the codec payload type from an a=rtpmap:X line.
 function getCodecPayloadType(sdpLine) {
-  const pattern = new RegExp("a=rtpmap:(\\d+) \\w+\\/\\d+");
+  const pattern = new RegExp('a=rtpmap:(\\d+) \\w+\\/\\d+');
   const result = sdpLine.match(pattern);
-  return result && result.length === 2 ? result[1] : null;
+  return (result && result.length === 2) ? result[1] : null;
 }
 
 // Returns a new m= line with the specified codec as the first one.
 function setDefaultCodec(mLine, payload) {
-  const elements = mLine.split(" ");
+  const elements = mLine.split(' ');
 
   // Just copy the first three parameters; codec order starts on fourth.
   const newLine = elements.slice(0, 3);
@@ -234,7 +225,7 @@ function setDefaultCodec(mLine, payload) {
       newLine.push(elements[i]);
     }
   }
-  return newLine.join(" ");
+  return newLine.join(' ');
 }
 
 // query getStats every second
@@ -247,7 +238,7 @@ window.setInterval(() => {
     res.forEach(report => {
       let bytes;
       let packets;
-      if (report.type === "outbound-rtp") {
+      if (report.type === 'outbound-rtp') {
         if (report.isRemote) {
           return;
         }
@@ -256,8 +247,7 @@ window.setInterval(() => {
         packets = report.packetsSent;
         if (lastResult && lastResult.has(report.id)) {
           // calculate bitrate
-          const bitrate =
-            (8 * (bytes - lastResult.get(report.id).bytesSent)) /
+          const bitrate = 8 * (bytes - lastResult.get(report.id).bytesSent) /
             (now - lastResult.get(report.id).timestamp);
 
           // append to chart
@@ -266,10 +256,8 @@ window.setInterval(() => {
           bitrateGraph.updateEndDate();
 
           // calculate number of packets and append to chart
-          packetSeries.addPoint(
-            now,
-            packets - lastResult.get(report.id).packetsSent
-          );
+          packetSeries.addPoint(now, packets -
+            lastResult.get(report.id).packetsSent);
           packetGraph.setDataSeries([packetSeries]);
           packetGraph.updateEndDate();
         }
