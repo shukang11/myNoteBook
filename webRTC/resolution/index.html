@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body, html {
+            height: 100%;
+        }
+        button {
+            margin: 0 10px 20px 0;
+            width: 90px;
+        }
+        div#buttons {
+            margin: 0 0 1em 0;
+        }
+        div#container {
+            max-width: 100%;
+        }
+        #errormessage {
+            display: none;
+            font-size: 300%;
+        }
+        #videoblock {
+            display: none;
+        }
+        p#dimensions {
+            height: 1em;
+            margin: 0 0 1.5em 0;
+        }
+        video {
+            background: none;
+            height: auto;
+            width: auto;
+        }
+    </style>
+<body>
+    <div id="buttons">
+        <button id="qvga" onclick="QVGAEvent()">QVGA</button>
+        <button id="vga" onclick="VGAEvent()">VGA</button>
+        <button id="hd" onclick="HDEvent()">HD</button>
+        <button id="full-hd">Full HD</button>
+        <button id="fourK">4K</button>
+        <button id="eightK">8K</button>
+    </div>
+    <div id="videoblock">
+        <p id="dimensions"></p>
+
+        <video id="gum-res-local" playsinline autoplay></video>
+        <div id="width">
+            <label>Width <span></span>px:</label>
+            <input type="range" min="0" max="7680" value="0">
+        </div>
+        <input id="sizelock" type="checkbox">Lock video size<br>
+        <input id="aspectlock" type="checkbox">Lock aspect ratio<br>
+    </div>
+    <p id="errormessage"></p>
+    <script src="./main.js"></script>
+</body>
+</html>
