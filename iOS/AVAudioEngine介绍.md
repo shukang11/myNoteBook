@@ -39,6 +39,7 @@
 >
 
 ```
+// Read
 NSURL *url = [[NSBundle mainBundle] URLForAuxiliaryExecutable:@"Your.mp3"];
      // Create AVAudioFile
      AVAudioFile *file = [[AVAudioFile alloc] initForReading:url error:nil];
@@ -49,6 +50,9 @@ NSURL *url = [[NSBundle mainBundle] URLForAuxiliaryExecutable:@"Your.mp3"];
      // Read AVAudioFile -> AVAudioPCMBuffer
      [file readIntoBuffer:buffer error:nil];
 
+
+// Write
+let audioFile = try! AVAudioFile(forWriting: recordingPath, settings: [AVFormatIDKey: kAudioFormatMPEG4AAC], commonFormat: .pcmFormatFloat32, interleaved: isInterleaved)
 ```
 * __AVAudioFormat__
 
@@ -226,3 +230,5 @@ int main(int argc, const char * argv[]) {
 ## Reference
 
 * [ios利用mic采集Pcm转为AAC，AudioQueue、AudioUnit(流式)](https://juejin.im/post/5a8fdd915188255de20105ef)
+
+* [关于实现唱吧清唱功能的理解](https://oliverqueen.cn/2018/06/19/MusicAbout/)
