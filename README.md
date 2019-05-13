@@ -19,6 +19,7 @@
 
 * [机器学习](#机器学习)
 
+
 * [前端](#前端)
 
 ## iOS&Swift
@@ -30,6 +31,9 @@
 * [Swift关键字说明](/iOS/关键字说明.md)
 
 * [AudioEngine](/iOS/AVAudioEngine介绍.md)
+
+* [音频开发基础知识](/iOS/音频开发基础知识.md)
+
 
 ## 数据结构
 * [索引](/数据结构/index.md)
