@@ -39,9 +39,7 @@
 * [索引](/数据结构/index.md)
 
 ## [Python](/python/python.md)
-* [协程](/python/协程.ipynb)
-
-* [多线程](/python/多线程.ipynb)
+* [协程](/python/协程.ipynb) & [多线程](/python/多线程.ipynb)
 
 ## webRTC
 
@@ -78,4 +76,4 @@
 
 ## 前端
 
-# [索引](/Web/索引.md)
+* [索引](/Web/索引.md)
