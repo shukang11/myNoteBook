@@ -47,7 +47,7 @@
 
 ## 服务器
 
-* [linux](/服务器/linux常用的操作.md)
+* [linux常用的操作](/服务器/linux常用的操作.md)
 
 * [进程管理](/服务器/supervisor.md)
 
