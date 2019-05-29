@@ -19,6 +19,24 @@
 
 ![Image](/iOS/images/modulemap001.png)
 
+modulemap 文件格式
+
+```
+module HC [system] {
+    umbrella header "hc.h"
+    export *
+    
+    explicit module Sub {
+        header "sub.h"
+        export *
+    }
+}
+
+
+```
+
 ## __链接__
 
 * [Module System of Swift (简析 Swift 的模块系统)](http://andelf.github.io/blog/2014/06/19/modules-for-swift/)
+
+* [Swift & C](https://imkcat.com/swift-and-c/)
