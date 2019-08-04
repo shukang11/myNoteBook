@@ -2,6 +2,8 @@
 
 * [挂载硬盘](#挂载硬盘)
 
+* [无屏幕配置树莓派wifi连接](#无屏幕配置树莓派wifi连接)
+
 * ## 切换界面与命令行
 
 ` startx `
@@ -50,3 +52,19 @@
 如果挂载出错
 
 `sudo fuser -m -u /dev/sda3 && sudo kill 1308`
+
+## 无屏幕配置树莓派wifi连接
+> 将刷好 Raspbian 系统的 SD 卡用电脑读取。在 boot 分区，也就是树莓派的 /boot 目录下新建 wpa_supplicant.conf 文件，按照下面的参考格式填入内容并保存 wpa_supplicant.conf 文件。
+```
+country=CN
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+ 
+network={
+ssid="WiFi-A"
+psk="12345678"
+key_mgmt=WPA-PSK
+priority=1
+}
+
+```
