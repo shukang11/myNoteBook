@@ -15,6 +15,8 @@ nginx启动后，在unix系统中以daemon的方式在后台运行，包含了�
 
 ` cd /etc/nginx/conf.d/ `
 
+如果是 mac ，那么配置地址则是 ` cd /usr/local/etc/nginx/conf.d/ `
+
 新建配置文件
 
 ```

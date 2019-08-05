@@ -45,4 +45,4 @@ stdout_logfile=/home/myname/test.log
 
 ```
 
-rabbitmq-server
+# rabbitmq-server
