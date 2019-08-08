@@ -33,6 +33,8 @@
 ## [Python](/python/python.md)
 * [协程](/python/协程.ipynb) & [多线程](/python/多线程.ipynb)
 
+<!-- * [tips](/python/tips.ipynb) -->
+
 ## webRTC
 
 * [介绍](/webRTC/介绍.md)

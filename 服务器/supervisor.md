@@ -45,4 +45,10 @@ stdout_logfile=/home/myname/test.log
 
 ```
 
+#### 如何启动
+
+1. 启动 `supervisord`
+
+2. 启动 `supervisorctrl status`
+
 # rabbitmq-server
