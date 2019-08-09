@@ -23,8 +23,8 @@ nginx启动后，在unix系统中以daemon的方式在后台运行，包含了�
 # pandaMama server config
 
 server {
-        server_name _; // 服务器名称
-        listen 5000; // 监听的端口号
+        server_name _; # 服务器名称
+        listen 5000; # 监听的端口号
         location / {
                 proxy_set_header Connection "";
                 proxy_set_header X-Real-IP $remote_addr;
@@ -32,7 +32,7 @@ server {
                 proxy_set_header Host $http_host;
                 proxy_set_header X-NginX-Proxy true;
                 proxy_pass http://127.0.0.1:6000;
-                proxy_redirect off; // 重定向开关
+                proxy_redirect off; # 重定向开关1
         }
 }
 

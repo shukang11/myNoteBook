@@ -22,6 +22,10 @@
 
 ` pip3 install git+https://github.com/Supervisor/supervisor `
 
+或者 
+
+`pip(apt-get) install supervisor`
+
 * 创建配置文件 
 
 ` echo_supervisord_conf > /etc/supervisord.conf `
@@ -47,8 +51,8 @@ stdout_logfile=/home/myname/test.log
 
 #### 如何启动
 
-1. 启动 `supervisord`
+1. 启动 `supervisord -c /etc/supervisor/supervisord.conf`
 
-2. 启动 `supervisorctrl status`
+2. 启动 `supervisorctrl -c /etc/supervisor/supervisord.conf`
 
 # rabbitmq-server
