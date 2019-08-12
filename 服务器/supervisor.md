@@ -40,7 +40,7 @@
 ```
 
 [program:myProgram]
-directory=/home/pi/sky_tool/; 执行命令前会切换到此目录
+directory=/home/pi/sky_tool/ ; 执行命令前会切换到此目录; 分号前面应当有空格
 command=pipenv run gunicorn -c gunicorn_config.py main:application ; 执行的命令
 environment=SUPERSET_HOME=/home/qboxserver/.superset,SUPERSET_WEBSERVER_PORT=7070 ; 可设置环境变量
 autostart=true

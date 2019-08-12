@@ -68,3 +68,7 @@ priority=1
 }
 
 ```
+
+# samba 与 MiniDLNA
+
+[link](https://www.jianshu.com/p/7dc8f2a01c27)
