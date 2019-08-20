@@ -29,3 +29,7 @@ $ npm uninstall 模块名
 $ npm uninstall -g 模块名
 
 ```
+
+* 使用 TypeScript
+
+[手册](https://typescript.bootcss.com/)
