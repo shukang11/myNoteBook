@@ -13,7 +13,18 @@
 
 ### 关于构建 （build）
 
-* `docker build -t name .` 构建一个镜像
+* `docker build -t name .` [构建一个镜像](https://www.runoob.com/docker/docker-build-command.html)
 
 ### 关于运行 （run）
+
+* `docker pull [image]` 从仓库中拉取镜像
+
+* `docker run [tag] [-d 后台运行] [-p 内部端口映射到主机上] [command]` 运行一个容器
+
+### 其他
+
+* `docker stats` 查看状态
+
+* `docker login` 登录，使用 docker id 而不是 邮箱
+
 
