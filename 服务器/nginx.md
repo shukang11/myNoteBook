@@ -23,20 +23,24 @@ nginx启动后，在unix系统中以daemon的方式在后台运行，包含了�
 # pandaMama server config
 
 server {
+        listen      443 ssl; # 开启 443 端口监听 开启 https
+        ssl_certificate cert/a.pem; # 证书地址
+        ssl_certificate_key cert/a.key; 
         server_name _; # 服务器名称
         listen 5000; # 监听的端口号
         location / {
-                proxy_set_header Connection "";
+                proxy_set_header Connection ""; # 设置请求头信息
                 proxy_set_header X-Real-IP $remote_addr;
                 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
                 proxy_set_header Host $http_host;
                 proxy_set_header X-NginX-Proxy true;
-                proxy_pass http://127.0.0.1:6000;
+                proxy_pass http://127.0.0.1:6000; # 转发到本机端口
                 proxy_redirect off; # 重定向开关1
         }
 }
 
 ```
+
 
 
 ```
