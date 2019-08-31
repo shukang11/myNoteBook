@@ -32,3 +32,7 @@ SELECT bao_rss_user.user_id, bao_rss.rss_id, bao_rss_content.content_id FROM bao
         AND bao_rss_user.user_id=1;
 
 ```
+
+* 执行外部 sql 文件
+
+`mysql -u root -p -D database<path/to/sql_file.sql`
