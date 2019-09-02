@@ -85,3 +85,8 @@ priority=1
 3. 移动光标到文本结束的地方，按p粘贴
 
 ```
+
+
+# ffmpeg
+
+* 下载 `ffmpeg -i https://ddppnew1.135-cdn.com/20190415/TOQuy5vq\/index.m3u8 -c copy -bsf:a aac_adtstoasc 1.mkv`
