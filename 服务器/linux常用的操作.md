@@ -69,6 +69,10 @@ key_mgmt=WPA-PSK
 priority=1
 }
 
+* 使用公钥链接服务器  `ssh -i "xxx.pem" name@0.0.0.0`
+
+* VNS 相关 [BBR](https://xiaozhou.net/enable-bbr-for-vps-2017-06-10.html); [配置](https://yizibi.github.io/2018/10/24/%E8%B6%85%E8%AF%A6%E7%BB%86%E5%9B%BE%E6%96%87%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BAVPS,VPN%E9%85%8D%E7%BD%AE/); [参考](https://starorc.gitbooks.io/set-up-ss/content/set_up_ss/set_sv.html)
+
 ```
 
 # samba 与 MiniDLNA
