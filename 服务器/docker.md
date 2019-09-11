@@ -1,5 +1,8 @@
 # docker 常用命令
 
+* 安装Docker-compose
+` sudo curl -L "https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose `
+
 ### 关于镜像（image）
 
  * `docker image ls` 查看本地镜像
@@ -15,9 +18,15 @@
 
 * `docker build -t name .` [构建一个镜像](https://www.runoob.com/docker/docker-build-command.html)
 
+* `docker tag sky_tool account/tagName:version` 打标签
+
+* `docker push account/tagName:latest` 推送到仓库
+
 ### 关于运行 （run）
 
-* `docker pull [image]` 从仓库中拉取镜像
+* `docker pull account/tagName:version ` 从仓库拉取项目
+
+* `docker pull [tag]` 从仓库中拉取镜像
 
 * `docker run [tag] [-d 后台运行] [-p 内部端口映射到主机上] [command]` 运行一个容器
 
