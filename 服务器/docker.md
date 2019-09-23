@@ -30,6 +30,8 @@
 
 * `docker run [tag] [-d 后台运行] [-p 内部端口映射到主机上] [command]` 运行一个容器
 
+* `docker run -t -i image /bin/bash` 运行容器
+
 ### 其他
 
 * `docker stats` 查看状态
