@@ -33,6 +33,23 @@ SELECT bao_rss_user.user_id, bao_rss.rss_id, bao_rss_content.content_id FROM bao
 
 ```
 
+## Mysql Tips
+
 * 执行外部 sql 文件
 
 `mysql -u root -p -D database<path/to/sql_file.sql`
+
+* 开启 3306 端口
+
+- 查看端口占用情况 `netstat -an | grep 3306`
+
+- 查看端口号 `show global variables like 'port';`
+
+- 更新root用户的host `use mysql; update user set host='%' where user='root'; flush privileges;`
+
+- 修改配置文件
+```
+[mysqld]
+port=3306
+bind-address=0.0.0.0
+```
