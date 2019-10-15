@@ -37,13 +37,19 @@
 
 * `docker run -t -i image /bin/bash` 运行容器
 
+* `docker exec -it container /bin/bash` 进入一个已经存在的容器
+
 ```
 参数解读
 --name 镜像名称
 -p 3307:3306 在容器中使用3306端口，映射到本机的3307端口
 -d 使用守护进程运行，服务挂在后台
+-it 交互式运行
 -v /path/to/local 将主机的目录作为容器的数据卷
 ```
+
+### 数据卷(Volume)
+
 
 ### 其他
 
