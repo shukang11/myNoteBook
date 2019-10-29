@@ -16,13 +16,18 @@
 
 ### 关于构建 （build）
 
-* `docker build -t name .` [构建一个镜像](https://www.runoob.com/docker/docker-build-command.html)
+* `docker build -t name .` 
+
+[构建一个镜像](https://www.runoob.com/docker/docker-build-command.html)
 
 * `docker tag sky_tool account/tagName:version` 打标签
 
 * `docker push account/tagName:latest` 推送到仓库
 
 ### 关于运行 （run）
+
+[Docker的持久化存储和数据共享](https://juejin.im/post/5b6d4439f265da0f800e0d5a)
+[Docker with Mysql官方文档](https://yeasy.gitbooks.io/docker_practice/appendix/repo/mysql.html)
 
 * `docker pull account/tagName:version ` 从仓库拉取项目
 
@@ -32,10 +37,41 @@
 
 * `docker run -t -i image /bin/bash` 运行容器
 
+* `docker exec -it container /bin/bash` 进入一个已经存在的容器
+
+```
+参数解读
+--name 镜像名称
+-p 3307:3306 在容器中使用3306端口，映射到本机的3307端口
+-d 使用守护进程运行，服务挂在后台
+-it 交互式运行
+-v /path/to/local 将主机的目录作为容器的数据卷
+```
+
+### 数据卷(Volume)
+
+
 ### 其他
 
 * `docker stats` 查看状态
 
 * `docker login` 登录，使用 docker id 而不是 邮箱
 
+ref: [链接](https://www.jianshu.com/p/9f13d02028c5)
+```
+# 关闭所有的容器
+docker stop $(docker ps -a -q)
+# 删除所有的容器
+docker rm $(docker ps -a -q)
+# 启动Mysql容器 -d(后台启动) -p 配置端口 -v 配置映射把服务器的文件映射到容器内（对于mysql来说使用相对路径把容器内的sql数据映射到服务器上）
+# --name 取得别名  zhaozn91/mysql:latest 镜像名称 
+docker run -d -p 3306:3306 -v docker_mysql:/var/lib/mysql --name=my_mysql zhaozn91/mysql:latest
+# redis我没有配置把数据映射到本地路径，需要的可以按照mysql自己配置
+docker run -d -p 6379:6379 --name=my_redis zhaozn91/redis:ubuntu
+# python容器多出来一个 --link=--link=my_mysql:db 相当于把两个容器关联可以使python容器访问mysql容器，my_mysql就是自己命名的别名 db就是在python容器中自己为my_mysql取得别名， 在Python程序中把连接数据库host=db就可以了，redis相同操作
+docker run -d -v /home/docker/init_python.sh:/home/start.sh -v /home/XViews2:/home/XViews2 --name=my_python --link=my_redis:redis --link=my_mysql:db zhaozn91/python3.5:ubuntu
+# nginx容器
+docker run -d -p 80:80 -v /home/xview/:/home/xview/ --name=my_nginx --link my_python:my_python zhaozn91/nginx:ubuntu
 
+
+```

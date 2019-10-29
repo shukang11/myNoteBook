@@ -8,7 +8,7 @@ $sudo apt-get install redis-server
 ```
 
 
-# redis 的启动与关闭
+## redis 的启动与关闭
 
 启动
 
@@ -17,4 +17,3 @@ $sudo apt-get install redis-server
 关闭
 
 `redis-cli shutdown`
-
