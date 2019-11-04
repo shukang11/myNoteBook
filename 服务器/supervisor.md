@@ -51,8 +51,43 @@ stdout_logfile=/home/myname/test.log
 
 #### 如何启动
 
-1. 启动 `supervisord -c /etc/supervisor/supervisord.conf`
+* 启动 `supervisord -c /etc/supervisor/supervisord.conf`
 
-2. 启动 `supervisorctrl -c /etc/supervisor/supervisord.conf`
+* 启动 `supervisorctrl -c /etc/supervisor/supervisord.conf`
+
+* 关闭 `supervisorctrl shutdown`
+
+* 加入开机自启动(以 ubuntu 为例)
+
+```
+新建文件supervisord.service
+
+#supervisord.service
+
+[Unit] 
+Description=Supervisor daemon
+
+[Service] 
+Type=forking 
+ExecStart=/usr/bin/supervisord -c /etc/supervisord.conf 
+ExecStop=/usr/bin/supervisorctl shutdown 
+ExecReload=/usr/bin/supervisorctl reload 
+KillMode=process 
+Restart=on-failure 
+RestartSec=42s
+
+[Install] 
+WantedBy=multi-user.target
+将文件拷贝到/usr/lib/systemd/system/
+
+cp supervisord.service /usr/lib/systemd/system/
+启动服务
+
+systemctl enable supervisord
+验证一下是否为开机启动
+
+systemctl is-enabled supervisord
+
+```
 
 # rabbitmq-server
