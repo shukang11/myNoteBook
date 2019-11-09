@@ -41,3 +41,6 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 ### 安装 node
 
 建议直接从 nvm 官网拉取代码构建
+
+### [配置dlna](http://shumeipai.nxez.com/2015/07/12/raspberry-pi-install-dlna-streaming-media-server.html)
+### [SAMBA](https://blog.csdn.net/u013181595/article/details/77150802)
