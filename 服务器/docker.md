@@ -19,6 +19,11 @@
 
 * `docker rm [id]`  删除一个容器，正在运行的容器不可删除
 
+* `docker top` 查看运行中容器内进程的情况
+
+* `docker exec` 在容器中启动新的进程
+
+
 ### 关于构建 （build）
 
 * `docker build -t name .` 
