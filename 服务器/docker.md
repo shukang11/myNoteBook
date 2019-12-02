@@ -13,6 +13,16 @@
 
 * `docker container rm  [容器]` 如果要删除一个运行中的容器， 可以添加 -f 参数。Docker 会发送 SIGKILL 信号给容器。
 
+* `docker ps [-l -a]` 查看容器 其中 -a 是列出所有容器， -l 是列出最近的一个容器
+
+* `docker inspect [id]` 查看具体的容器信息
+
+* `docker rm [id]`  删除一个容器，正在运行的容器不可删除
+
+* `docker top` 查看运行中容器内进程的情况
+
+* `docker exec` 在容器中启动新的进程
+
 
 ### 关于构建 （build）
 
@@ -39,14 +49,18 @@
 
 * `docker exec -it container /bin/bash` 进入一个已经存在的容器
 
+* `docker start [-i] [containerId]` 重新运行一个容器
 ```
 参数解读
 --name 镜像名称
 -p 3307:3306 在容器中使用3306端口，映射到本机的3307端口
 -d 使用守护进程运行，服务挂在后台
--it 交互式运行
+-it 交互式运行 如果想退出交互式容器 `ctrl + p ctrl + q`，此时容器在后台运行 想重新进入交互式环境 `docker attach [id]`
 -v /path/to/local 将主机的目录作为容器的数据卷
 ```
+
+### 基本操作
+
 
 ### 数据卷(Volume)
 
