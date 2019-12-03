@@ -7,7 +7,9 @@
 
  * `docker image ls` 查看本地镜像
 
- * `docker  image rm [镜像id]` 移除镜像
+ * `docker  image rm [image]` 移除镜像
+
+ * `docker inspect [image]` 查看镜像信息
 
 ### 关于容器 （container）
 
@@ -33,6 +35,8 @@
 * `docker tag sky_tool account/tagName:version` 打标签
 
 * `docker push account/tagName:latest` 推送到仓库
+
+### [关于Dockerfile](#Dockerfile)
 
 ### 关于运行 （run）
 
@@ -89,3 +93,6 @@ docker run -d -p 80:80 -v /home/xview/:/home/xview/ --name=my_nginx --link my_py
 
 
 ```
+
+
+### Dockerfile
