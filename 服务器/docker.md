@@ -36,6 +36,8 @@
 
 * `docker push account/tagName:latest` 推送到仓库
 
+* `docker commit `
+
 ### [关于Dockerfile](#Dockerfile)
 
 ### 关于运行 （run）
