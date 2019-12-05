@@ -56,6 +56,7 @@
 * `docker exec -it container /bin/bash` 进入一个已经存在的容器
 
 * `docker start [-i] [containerId]` 重新运行一个容器
+
 ```
 参数解读
 --name 镜像名称
@@ -98,3 +99,16 @@ docker run -d -p 80:80 -v /home/xview/:/home/xview/ --name=my_nginx --link my_py
 
 
 ### Dockerfile
+
+示例1：
+起一个nginx服务，并将本地一个目录映射到docker中
+``` shell
+docker container run \
+  -d \
+  -p 127.0.0.2:8080:80 \
+  --rm \
+  --name mynginx \
+  --volume "$PWD/html":/usr/share/nginx/html \
+  nginx
+
+```
