@@ -44,7 +44,6 @@ server {
 
 
 ```
-
 server {
         server_name _;
         listen 5001;
@@ -53,9 +52,9 @@ server {
                 index index.html; # 指定 index 文件
         }
 }
-~
 
 ```
+* 这里配置的静态文件，但是有时会出现`403`错误,需要检查nginx的配置 user 选项，是否分配了一个有权限的用户或用户组
 
 ## 常用命令
 
