@@ -112,3 +112,23 @@ docker container run \
   nginx
 
 ```
+
+### Docker数据卷
+
+> 是经过特殊设计的目录，可以绕过联合文件系统，为一个或者多个容器提供访问。
+
+> 数据卷的设计目的是在于数据的永久化，完全独立于容器的声明周期
+
+ * 为容器添加数据卷: ` sudo docker run -v ~/container_data:/data -it ubuntu /bin/bash `
+
+ 如果本地并不存在 `~/container_data` 目录，则会创建目录
+
+ 还可以通过在 `Dockerfile` 中，添加 VOLUMN ['path'] 来添加卷，但是通过这种方式添加的卷，并不能在多个容器中共享数据, 想要实现挂载宿主机目录，需要通过挂载数据卷容器来实现
+
+ ### Docker数据卷容器
+
+ 通过创建一个容器，指定了挂载目录，其他容器使用 `--volumes-from` 来连接到这个容器，使用挂载的目录
+
+ ### Docker数据卷的备份和还原 
+ 
+ ` docker run --volumes-from [contianer name] -v ${PWD}:/backup ubuntu tar cvf /backup/backup.tar [container data volume]`
