@@ -19,10 +19,18 @@
  - 激活环境 `pyenv activate <name>`
  - 退出环境 `pyenv deactivate`
  - 删除环境 `pyenv uninstall <env-name>`
+
 * virtualenv
- - 创建虚拟环境 `virtualenv --n-site-packages <env-name>`
+ - 创建虚拟环境 `virtualenv --no-site-packages <env-name>`
  - 激活环境 `source <env-name>/bin/activate`
  - 退出环境 `deactivate`
+
+* conda
+ - 创建虚拟环境 `conda create -n <env-name> python=version`
+ - 激活环境 `source activate <env-name>`
+ - 退出环境 `source deactivate`
+
+
 ## jupyter
 
 安装好之后 
