@@ -132,3 +132,16 @@ docker container run \
  ### Docker数据卷的备份和还原 
  
  ` docker run --volumes-from [contianer name] -v ${PWD}:/backup ubuntu tar cvf /backup/backup.tar [container data volume]`
+
+
+ ### 示例 部署一个 flask + mysql + redis 的应用
+
+1. 需要的容器: `python mysql redis`
+
+2. 把 redis 服务跑起来
+
+` docker run --name redis_6379 -d -p 6379:6379 redis --appendonly yes `
+
+3. 把 mysql 服务跑起来
+
+` docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=12345678 -d mysql `
