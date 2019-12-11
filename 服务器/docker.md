@@ -23,7 +23,9 @@
 
 * `docker top` 查看运行中容器内进程的情况
 
-* `docker exec` 在容器中启动新的进程
+* `docker attach [id]` 连接到一个运行中的容器
+
+* `docker exec [id] [command]` 在容器中启动新的进程
 
 
 ### 关于构建 （build）
@@ -132,3 +134,19 @@ docker container run \
  ### Docker数据卷的备份和还原 
  
  ` docker run --volumes-from [contianer name] -v ${PWD}:/backup ubuntu tar cvf /backup/backup.tar [container data volume]`
+
+
+ ### 示例 部署一个 flask + mysql + redis 的应用
+
+1. 需要的容器: `python mysql redis`
+
+2. 把 redis 服务跑起来
+
+` docker run --name redis_6379 -d -p 6379:6379 redis --appendonly yes `
+
+3. 把 mysql 服务跑起来
+
+` docker run --name mysql_3306 -p 127.0.0.1:3306:3306 -e MYSQL_ROOT_PASSWORD=12345678 -e MYSQL_DATABASE=sky_main -d mysql --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci `
+
+> MYSQL_DATABASE 创建数据库实例
+
