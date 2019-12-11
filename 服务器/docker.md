@@ -23,7 +23,9 @@
 
 * `docker top` 查看运行中容器内进程的情况
 
-* `docker exec` 在容器中启动新的进程
+* `docker attach [id]` 连接到一个运行中的容器
+
+* `docker exec [id] [command]` 在容器中启动新的进程
 
 
 ### 关于构建 （build）
@@ -144,4 +146,7 @@ docker container run \
 
 3. 把 mysql 服务跑起来
 
-` docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=12345678 -d mysql `
+` docker run --name mysql_3306 -p 127.0.0.1:3306:3306 -e MYSQL_ROOT_PASSWORD=12345678 -e MYSQL_DATABASE=sky_main -d mysql --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci `
+
+> MYSQL_DATABASE 创建数据库实例
+

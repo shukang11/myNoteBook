@@ -75,6 +75,11 @@ type = tcp
 local_ip = 127.0.0.1
 local_port = 22
 
+[web]
+type = http
+local_port = 5010
+custom_domains = <remote_ip>
+
 ```
 * 运行代码 ` ./frps -c ./frps.ini `
 
