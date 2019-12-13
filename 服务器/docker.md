@@ -146,6 +146,7 @@ docker container run \
 
 3. 把 mysql 服务跑起来
 
+* [Docker与MySQL](https://juejin.im/post/5cb832f06fb9a068ad1b1739)
 ` docker run --name mysql_3306 -p 127.0.0.1:3306:3306 -e MYSQL_ROOT_PASSWORD=12345678 -e MYSQL_DATABASE=sky_main -d mysql --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci `
 
 > MYSQL_DATABASE 创建数据库实例
