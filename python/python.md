@@ -26,7 +26,7 @@
  - 退出环境 `deactivate`
 
 * conda
- - 创建虚拟环境 `conda create -n <env-name> python=version`
+ - 创建虚拟环境 `conda create -n <env-name> python=<version>`
  - 激活环境 `source activate <env-name>`
  - 退出环境 `source deactivate`
 

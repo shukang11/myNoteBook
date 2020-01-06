@@ -59,3 +59,5 @@ server {
 ## 常用命令
 
 重新加载 `nginx -s reload`
+
+通过前台运行 `nginx -g 'daemon off;'`
