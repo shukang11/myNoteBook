@@ -26,3 +26,7 @@
 ### TIPS
 
 [一次解决Xcode无法编译的问题](/iOS/一次解决Xcode无法编译的问题.md)
+
+### 使用命令上传ipa包
+
+`xcrun altool --upload-app -f /path/to/ipa -u email@qq.com -p password`
