@@ -31,6 +31,24 @@
 ```
 * Segment段
 
+部分的 Section：
+
+* `Text.__text` 主程序代码
+
+* `Text.__cstring` c 字符串
+
+* `Text.__stubs` 桩代码
+
+* `Text.__stub_helper`
+
+* `Data.__data` 初始化可变的数据
+
+* `Data.__objc_imageinfo` 镜像信息 ，在运行时初始化时 objc_init，调用 load_images 加载新的镜像到 infolist 中
+
+* `Data.__objc_classlist` 类列表
+
+* `Data.__objc_classrefs` 引用的类
+
 
 ## __链接__
 
