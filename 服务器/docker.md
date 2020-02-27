@@ -86,6 +86,10 @@ ref: [链接](https://www.jianshu.com/p/9f13d02028c5)
 docker stop $(docker ps -a -q)
 # 删除所有的容器
 docker rm $(docker ps -a -q)
+# 删除已停止的docker容器
+docker rm `docker ps -a | grep Exited | awk '{print $1}'`
+# 删除名称或标签为none的镜像
+docker rmi -f  `docker images | grep '<none>' | awk '{print $3}'` 
 # 启动Mysql容器 -d(后台启动) -p 配置端口 -v 配置映射把服务器的文件映射到容器内（对于mysql来说使用相对路径把容器内的sql数据映射到服务器上）
 # --name 取得别名  zhaozn91/mysql:latest 镜像名称 
 docker run -d -p 3306:3306 -v docker_mysql:/var/lib/mysql --name=my_mysql zhaozn91/mysql:latest
