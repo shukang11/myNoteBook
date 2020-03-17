@@ -1,6 +1,6 @@
 # raspbian
 
-#### 写入系统
+## 写入系统
 
 ### 1. sd卡插入读卡器并查看磁盘序号
 
@@ -14,7 +14,7 @@
 
 `sudo dd bs=1m if=xxxxx.img of=/dev/rdiskn conv=sync`
 
-### 安装 pyenv 
+# pyenv 
 
 1. 安装依赖
 
@@ -25,7 +25,7 @@
 `$ curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash`
 
 
-### 安装 zsh
+# zsh
 
 ```
 apt install zsh
@@ -34,18 +34,18 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 
 ```
 
-### 安装 golang
+# golang
 
 ` sudo apt install golang `
 
-### 安装 node
+# node
 
 建议直接从 nvm 官网拉取代码构建
 
 ### [配置dlna](http://shumeipai.nxez.com/2015/07/12/raspberry-pi-install-dlna-streaming-media-server.html)
 ### [SAMBA](https://blog.csdn.net/u013181595/article/details/77150802)
 
-### frp
+# frp
 
 服务端配置
 
@@ -62,6 +62,7 @@ dashboard_pwd = dashboard_pwd_value ; frp 后台服务页面的管理员密码
 
 * 运行代码 `./frps -c ./frps.ini`
 
+客户端配置
 ```
 [common]
 server_addr = your_server_ip ; 服务器端的 ip
@@ -84,3 +85,8 @@ custom_domains = <remote_ip>
 * 运行代码 ` ./frps -c ./frps.ini `
 
 * 连接 ` ssh -oPort=<remote_port> pi@<your_server_ip> `
+
+# 使用树莓派搭建推流服务
+
+1. 安装 ` sudo aptitude install lsb-release `
+

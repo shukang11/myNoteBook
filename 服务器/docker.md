@@ -73,6 +73,9 @@
 
 ### 数据卷(Volume)
 
+* `docker volume ls` 查看数据卷宗
+
+* `docker volume rm  [id]` 删除数据卷宗
 
 ### 其他
 
@@ -158,3 +161,15 @@ docker container run \
 `docker run --name sky_main-5011 -p 0.0.0.0:5011:8000 --link mysql-3000:mysql --link redis-6379:redis -e REDIS_HOST=redis -e SQLALCHEMY_DATABASE_URI=mysql+pymysql://root:12345678@mysql:3306/sky_main -d flask_sky_main `
 
 ### 通过 docker-compose 编排
+
+如果docker提示 
+```
+ERROR: Couldn’t connect to Docker daemon at http+docker://localunixsocket - is it running?
+
+If it’s at a non-standard location, specify the URL with the DOCKER_HOST environment variable.
+
+```
+
+需要先将用户添加到docker组 ` sudo gpasswd -a ${USER} docker `
+
+然后退出当前用户，比如切换为 `root` 再切回来 `sudo su && su pi`
