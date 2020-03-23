@@ -36,7 +36,7 @@ make
 
 `cmake_minimum_required(VERSION 3.2)` # 指定cmake版本
 
-`projct (PROJECT_NAME)` # 指定项目名称 
+`project (PROJECT_NAME)` # 指定项目名称 
 
 `include_directories(include)` # 指定目录
 

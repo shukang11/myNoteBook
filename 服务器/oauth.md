@@ -78,3 +78,5 @@ __4.主要流程__
 * [OAuth2.0协议入门（二）：OAuth2.0授权服务端从设计到实现](https://juejin.im/post/5b8cb6586fb9a01a133685c9#heading-2)
 
 * [理解OAuth 2.0](https://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html)
+
+* [理解 OAuth 2.0 认证流程](https://lotabout.me/2020/OAuth-2-workflow/)
