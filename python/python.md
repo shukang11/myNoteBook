@@ -27,6 +27,7 @@
 
 * conda
  - 创建虚拟环境 `conda create -n <env-name> python=<version>`
+ - 安装到某个环境 `conda install --name <env-name> <package>`
  - 激活环境 `source activate <env-name>`
  - 退出环境 `source deactivate`
 
