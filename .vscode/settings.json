@@ -2,6 +2,5 @@
     "files.associations": {
         "ostream": "cpp",
         "iosfwd": "cpp"
-    },
-    "python.pythonPath": "/Users/sunshukang/miniconda3/envs/machine/bin/python"
+    }
 }
