@@ -35,6 +35,11 @@ module HC [system] {
 
 ```
 
+## 导入 Module Map 文件
+创建好了 Module Map 文件之后，我们需要让编译器能够找到 Module Map 文件，这样才可以进行调用
+
+我们进入 Build Settings 中，找到 Swift Compiler - Search Paths 部分下的 Import Paths，把 Module Map 文件的路径添加上
+
 ## __链接__
 
 * [Module System of Swift (简析 Swift 的模块系统)](http://andelf.github.io/blog/2014/06/19/modules-for-swift/)
