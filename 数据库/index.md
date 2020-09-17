@@ -1,11 +1,7 @@
-## 相关软件备忘
+# 目录
 
-* glances 系统检测
+* [Mysql](/数据库/Mysql.md)
+  
+* [orm_in_python](/数据库/orm_in_python.ipynb)
 
-[Unit]
-Description = Glances in Web Server Mode
-After = network.target
-[Service]
-ExecStart = /root/.pyenv/shims/glances  -w  -t  5  # glances路径因安装方法不同根据实际情况确定，可使用 which glances 命令获取
-[Install]
-WantedBy = multi-user.target
+* [redis](/数据库/redis.md)

@@ -40,8 +40,33 @@ module HC [system] {
 
 我们进入 Build Settings 中，找到 Swift Compiler - Search Paths 部分下的 Import Paths，把 Module Map 文件的路径添加上
 
+
+## 混编情况呢？
+
+* 在创建Pod，且引入Objective-C语言开发的第三方公共库供Swift使用时，我们并不需要创建xxx-Bridge-Header.h桥文件去引入Objective-C的头文件， 这个工作是交由xxx-umbrella.h文件完成，这个文件的其中一个作用：其实和xxx-Bridge-Header.h桥文件的作用基本相同，向外界暴露Objective-C的头文件供Swift使用，实现Swift和Objective-C的混编。当你再次通过ss.source_files和ss.public_header_files暴露第三方公共的头文件时会重复定义，所以需要注释掉或删除掉ss.source_files和ss.public_header_files这两个参数及配置。
+
+* 如果你的项目主要是采用Swift语言来写的，那么你就必须要创建xxx-Bridge-Heder.h桥文件来引入Objective-C的头文件，那有没有一种方式是可以不需要创建xxx-Bridge-Header.h桥文件的呢？
+
+* 通过修改 podspec 文件， 使用 prepare_command 属性帮助我们自动创建 .modulemap 文件
+
+> prepare_command属性的解释、使用场景及禁用条件：
+> 
+>prepare_command属性是下载Pod后将执行的bash脚本。此命令可用于创建、删除和修改下载的任何文件，并将在收集规范的其他文件属性的任何路径之前运行。
+>
+> 此命令在清理Pod和创建Pods项目之前执行。工作目录是Pod的根目录。
+>
+> prepare_command属性必须在主模块中使用。
+> 
+>如果pod安装了:path选项，则不会执行此命令。
+
+
+
+****
+
 ## __链接__
 
 * [Module System of Swift (简析 Swift 的模块系统)](http://andelf.github.io/blog/2014/06/19/modules-for-swift/)
 
 * [Swift & C](https://imkcat.com/swift-and-c/)
+
+*  [Swift/Objective-C-使用Cocoapods创建/管理私有库（高级用法）](https://wemp.app/posts/5d3eef42-d670-4e32-8751-05969a5cfa49)

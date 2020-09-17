@@ -33,6 +33,8 @@
 
 ` Carthage update --platform iOS ` 只针对 iOS 平台编译
 
+`--no-use-binaries` 选项可以设置不使用远端的二进制，而是在本地生成二进制
+
 > 如果失败的话，先用Xcode打开你的项目，Product > Scheme > Manage Schemes 在新窗口中，勾选上 Shared，点击 Close。在终端再次执行这个命令
 
 4. 配置项目
@@ -53,3 +55,5 @@
 
 ### links
 * [Carthage安装和使用教程](https://juejin.im/post/5bfc408e6fb9a049f745e1b9)
+* [Carthage 让项目支持及使用，第三方静态库转为动态库](https://www.cnblogs.com/jys509/p/10334527.html)
+* [Carthage 官文翻译](https://www.jianshu.com/p/e0c0ceee8ab2)
