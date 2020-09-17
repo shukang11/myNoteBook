@@ -48,7 +48,7 @@ yarn add webpack babel-core babel-loader babel-preset-es2015 babel-preset-react 
 
 - 创建Webpack 配置文件
 
-```
+``` javascript
 
 const webpack = require('webpack')
 const path = require('path')
