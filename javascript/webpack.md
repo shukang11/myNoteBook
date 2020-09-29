@@ -51,7 +51,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 plugins: [
-    // 构建前情路输出目录
+    // 构建前清空输出目录
     new CleanWebpackPlugin(),
     // 在输出目录自动生成html文件
     new HtmlWebpackPlugin({
@@ -123,6 +123,8 @@ module.exports = config;
 
 ## TypeScript 支持
 
+`yarn add  typescript ts-loader --dev`
+
 1. 配置 loader
 
 ``` javascript
@@ -155,9 +157,13 @@ resolve: {
       "jsx": "react",
       "allowJs": true
     }
-  }
+}
 
 ```
+
+## 配合React使用
+
+使用 `yarn run eject`
 
 # Ref
 

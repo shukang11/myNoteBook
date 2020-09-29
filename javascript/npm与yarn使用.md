@@ -107,6 +107,10 @@ module.exports = {
 
 快速创建 react 项目 ==> `create-react-app my-app --scripts-version=react-scripts-ts`
 
+or
+
+ `yarn create react-app my-app --template typescript`
+
 ### 资料
 
 [在nvm环境下安装nodejs、npm和yarn](https://www.51noip.cn/2018/06/16/install-node-npm-yarn-using-nvm/)
